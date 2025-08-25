@@ -1,7 +1,7 @@
 # Scegli un'immagine Node.js di base
 FROM node:20-slim
 
-ARG CACHE_BUST=24
+ARG CACHE_BUST=233
 RUN echo "Cache bust: $CACHE_BUST"
 
 # Installa git, python3, pip e dipendenze per compilazione
@@ -17,7 +17,7 @@ WORKDIR /usr/src/app
 ARG GIT_REPO_URL="https://github.com/RiccardoBe/streamvix.git"
 ARG GIT_BRANCH="main"
 
-ARG CACHE_BUST2=24
+ARG CACHE_BUST2=233
 RUN echo "Cache bust: $CACHE_BUST"
 
 # Forza git a non usare cache aggiungendo timestamp
@@ -51,7 +51,7 @@ RUN chown -R node:node /usr/src/app
 # Torna all'utente node per le operazioni di pnpm e l'esecuzione dell'app
 USER node
 # Modifica temporanea: rimuovi --frozen-lockfile per permettere l'aggiornamento del lockfile
-ARG BUILD_CACHE_BUST=24
+ARG BUILD_CACHE_BUST=233
 RUN echo "Build cache bust: $BUILD_CACHE_BUST"
 
 RUN rm -rf node_modules .pnpm-store dist 2>/dev/null || true
@@ -82,6 +82,22 @@ ENTRYPOINT ["node", "/start"]
 
 # Definisci il comando per avviare l'applicazione
 #CMD [ "pnpm", "start" ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
